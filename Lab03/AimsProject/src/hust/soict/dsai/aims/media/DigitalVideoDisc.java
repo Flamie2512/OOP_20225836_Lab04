@@ -1,9 +1,7 @@
 package hust.soict.dsai.aims.media;  // Move to the correct package
 
-public class DigitalVideoDisc extends media {
+public class DigitalVideoDisc extends Disc {
 
-    private String director;
-    private int length; 
     private static int nbDigitalVideoDiscs = 0;
 
     public DigitalVideoDisc(String title) {
@@ -19,26 +17,8 @@ public class DigitalVideoDisc extends media {
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        super(0, title, category, cost);
-        this.director = director;
-        this.length = length;
+        super(title, category, director, length, cost);
         nbDigitalVideoDiscs++;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
     }
 
     public int getId() {
@@ -54,6 +34,6 @@ public class DigitalVideoDisc extends media {
     }
     @Override
     public String toString() {
-        return "DVD - " + getTitle() + " - " + getCategory() + " - " + director + " - " + length + " mins: " + getCost() + " $";
+        return "DVD - " + getTitle() + " - " + getCategory() + " - " + getDirector() + " - " + getLength() + " mins: " + getCost() + " $";
     }
 }
