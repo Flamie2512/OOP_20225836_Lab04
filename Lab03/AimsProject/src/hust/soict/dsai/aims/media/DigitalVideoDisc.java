@@ -1,12 +1,10 @@
-package hust.soict.dsai.aims.disc;
-public class DigitalVideoDisc {
-    private String title;
-    private String category;
+package hust.soict.dsai.aims.media;  // Move to the correct package
+
+public class DigitalVideoDisc extends media {
+
     private String director;
-    private int length;
-    private float cost;
+    private int length; 
     private static int nbDigitalVideoDiscs = 0;
-    private int id;
 
     public DigitalVideoDisc(String title) {
         this(title, null, null, 0, 0.0f);
@@ -21,28 +19,10 @@ public class DigitalVideoDisc {
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        this.title = title;
-        this.category = category;
+        super(0, title, category, cost);
         this.director = director;
         this.length = length;
-        this.cost = cost;
-        this.id = ++nbDigitalVideoDiscs;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+        nbDigitalVideoDiscs++;
     }
 
     public String getDirector() {
@@ -61,27 +41,19 @@ public class DigitalVideoDisc {
         this.length = length;
     }
 
-    public float getCost() {
-        return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
-
     public int getId() {
-        return id;
+        return super.getId();
     }
 
     public static int getNbDigitalVideoDiscs() {
         return nbDigitalVideoDiscs;
     }
 
-    public boolean isMatch(String title){
-        return this.title.equalsIgnoreCase(title);
+    public boolean isMatch(String title) {
+        return this.getTitle().equalsIgnoreCase(title);
     }
-
+    @Override
     public String toString() {
-        return "DVD - " + title + " - " + category + " - " + director + " - " + length + ": " + cost + " $";
+        return "DVD - " + getTitle() + " - " + getCategory() + " - " + director + " - " + length + " mins: " + getCost() + " $";
     }
 }

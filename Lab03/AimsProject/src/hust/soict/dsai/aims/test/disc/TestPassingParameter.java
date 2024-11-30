@@ -1,9 +1,8 @@
 package hust.soict.dsai.aims.test.disc;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class TestPassingParameter {
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle");
         DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella");
         swap(jungleDVD, cinderellaDVD);
