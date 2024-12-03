@@ -1,5 +1,7 @@
 package hust.soict.dsai.aims.media;
 
+import java.util.ArrayList;
+
 public abstract class media {
     private int id;
     private String title;
@@ -44,4 +46,27 @@ public abstract class media {
     public void setCost(float cost) {
         this.cost = cost;
     }
+
+    public boolean equals(Object obj) {
+		if (obj instanceof media) {
+			media media = (media) obj;
+			if (this.id == media.id) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static void main(String[] args) {
+	    ArrayList<media> mediae = new ArrayList<>();
+	    
+	    CompactDisc cd = new CompactDisc(1,"Soledad", "Ballad", 12.5f);
+	    DigitalVideoDisc dvd = new DigitalVideoDisc("Final Fantasy X", "Fantasy", 222.22f );
+	    Book book = new Book(2,"Operating System Concepts", "ICT", 30f);
+	    
+	    // Add some media objects to the list
+	    mediae.add(cd);
+	    mediae.add(dvd);
+	    mediae.add(book);
+}
 }
