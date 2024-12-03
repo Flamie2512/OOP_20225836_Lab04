@@ -1,42 +1,26 @@
 package hust.soict.dsai.aims.store;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.media;
 
+import java.util.ArrayList;
 public class Store {
-    public static final int MAX_ITEMS = 50;
-    private DigitalVideoDisc[] itemsInStore = new DigitalVideoDisc[MAX_ITEMS];
-    private int qtyInStore = 0;
-
-    public void addDVD(DigitalVideoDisc dvd) {
-        if (qtyInStore < MAX_ITEMS) {
-            itemsInStore[qtyInStore++] = dvd;
-            System.out.println("DVD added to the store: " + dvd.getTitle());
-        } else {
-            System.out.println("The store is full. Cannot add more DVDs.");
-        }
+    private ArrayList<media> itemsInStore = new ArrayList<media>();
+    
+    public void addMedia(media media) {
+        itemsInStore.add(media);
+        System.out.println(media.getTitle()+ " has been added to the store.");
     }
 
-    public void removeDVD(DigitalVideoDisc dvd) {
-        boolean found = false;
-        for (int i = 0; i < qtyInStore; i++) {
-            if (itemsInStore[i].equals(dvd)) {
-                itemsInStore[i] = itemsInStore[qtyInStore - 1];
-                itemsInStore[qtyInStore - 1] = null;
-                qtyInStore--;
-                System.out.println("DVD removed from the store: " + dvd.getTitle());
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            System.out.println("DVD not found in the store: " + dvd.getTitle());
-        }
-    }
-
-    public void printStore() {
-        System.out.println("****************** STORE ******************");
-        for (int i = 0; i < qtyInStore; i++) {
-            System.out.println((i + 1) + ". " + itemsInStore[i].toString());
-        }
-        System.out.println("*******************************************");
-    }
+    public void removeMedia(media media) {
+	    boolean found = false; 
+	    for (media item : itemsInStore) {
+	        if (item.equals(media)) {
+	        	itemsInStore.remove(item);
+	            System.out.println(media.getTitle() + " has been removed from the store.");
+	            found = true;
+	            break;
+	        }
+	    }
+	    if (!found) System.out.println(media.getTitle() + " is not in the store.");
+	}
+    public ArrayList<media> getItemsInStore() {return itemsInStore;}
 }
