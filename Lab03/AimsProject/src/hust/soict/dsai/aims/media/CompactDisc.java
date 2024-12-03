@@ -6,6 +6,9 @@ import java.util.List;
 public class CompactDisc extends Disc implements Playable {
     private String artist;
     private List<Track> tracks;
+    public CompactDisc(int id, String title, String category, float cost) {
+		super(id, title, category, cost);
+	}
 
     // Constructor
     public CompactDisc(String title, String category, float cost, int length, String director, String artist) {
